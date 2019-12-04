@@ -19,7 +19,7 @@ class Chat extends Component {
   componentDidMount() {
     const { match: { params } } = this.props;
 
-    this.socket = io('http://localhost:5000/');
+    this.socket = io('https://cm-socket-io-chat-room.herokuapp.com/');
 
     this.socket.on('connect', () => {
       console.log('connect on room '+params.room);
