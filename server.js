@@ -28,10 +28,8 @@ io.on('connection', socket => {
 server.listen(port, () => console.log(`Listening on port ${port}`));
 
 // create a GET route
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
-});
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
